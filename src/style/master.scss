@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: sans-serif;
+}
+body {
+  font-size: 1.6rem;
+  background-color: #000;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.plain-header {
+  width: 100%;
+  height: 100%;
+
+  &__box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: royalblue;
+  }
+}
