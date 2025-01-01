@@ -1,8 +1,10 @@
 import "../style/master.scss";
+import "jquery-ui-dist/jquery-ui.css";
+import "jquery-ui";
 
-$(document).ready(function() {
-    console.log('jQuery is working!');
-    
-    // Przykład użycia jQuery
-    $('.plain-header__title').css('color', '#ff0');
+$(document).ready(function () {
+  console.log("jQuery and jQuery UI are working!");
+
+  // Przykład użycia jQuery UI - dodajmy efekt draggable do nagłówka
+  $(".plain-header__box").draggable();
 });

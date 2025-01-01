@@ -21,6 +21,10 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: "asset/resource",
         generator: {
@@ -38,9 +42,15 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ],
+  resolve: {
+    alias: {
+      'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
+    }
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
