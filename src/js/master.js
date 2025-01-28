@@ -1,15 +1,27 @@
+import "jquery";
+import "jquery-ui-dist/jquery-ui.css";
+import "jquery-ui-dist/jquery-ui";
 import "../style/master.scss";
 import "../style/components/_text-important.scss";
-import "jquery-ui-dist/jquery-ui.css";
-import "jquery-ui";
+import "./components/instagram-pureJs";
 
-// $(document).ready(function () {
-//   console.log("jQuery and jQuery UI are working!");
+// Initialize components
+const App = {
+  Widgets: {
+    Instagram: new InstagramFeed(),
+  },
+};
 
-//   // Przykład użycia jQuery UI - dodajmy efekt draggable do nagłówka
-//   $(".plain-header__box").draggable();
-// });
+// Make App global
+window.App = App;
 
 $(document).ready(function () {
-  $(".plain-header__box").draggable();
+  // Initialize draggable
+  $(".sub, p").draggable({
+    containment: "#main",
+    cancel: "#sub2",
+  });
+
+  // Run Instagram feed
+  App.Widgets.Instagram.run();
 });
