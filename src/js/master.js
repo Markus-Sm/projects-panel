@@ -3,12 +3,13 @@ import "jquery-ui-dist/jquery-ui.css";
 import "jquery-ui-dist/jquery-ui";
 import "../style/master.scss";
 import "../style/components/_text-important.scss";
-import "./components/instagram-pureJs";
+import "../style/components/_instagram-feed.scss";
+// import { InstagramFeed } from "./components/myInst";
 
 // Initialize components
 const App = {
   Widgets: {
-    Instagram: new InstagramFeed(),
+    Instagram: null, // Will be initialized after DOM is ready
   },
 };
 
@@ -21,7 +22,4 @@ $(document).ready(function () {
     containment: "#main",
     cancel: "#sub2",
   });
-
-  // Run Instagram feed
-  App.Widgets.Instagram.run();
 });
