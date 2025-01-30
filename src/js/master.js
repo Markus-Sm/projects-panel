@@ -2,9 +2,7 @@ import "jquery";
 import "jquery-ui-dist/jquery-ui.css";
 import "jquery-ui-dist/jquery-ui";
 import "../style/master.scss";
-import "../style/components/_text-important.scss";
-import "../style/components/_instagram-feed.scss";
-// import { InstagramFeed } from "./components/myInst";
+import "./components/instagram-pureJs";
 
 // Initialize components
 const App = {

@@ -1,88 +1,73 @@
-import { instagramToken } from "../config.js";
+console.log("Instagram loaded");
 
-class InstagramFeed {
-  constructor() {
-    this.feedContainer = document.getElementById("instagram-feed");
-  }
+let domainUrl = "https://graph.instagram.com/me/media?";
+let fields = "fields=media_url";
+var access_token =
+  "IGQVJVV2xnd3VqNWFLaUxXVXNUSTVtQko4WVNjMXdiSS1tNkZA0YUtxSndDYk9SNkZA0RkNhZA0xRdEFwbkVLdnY1eVkxRE5MLXdzTFlnbDlmdWhlNWJ2VUdlNnpTOFRFZAW9FU1lSU041WjNMaXJqX1p3aAZDZD";
 
-  async run() {
-    if (!instagramToken) {
-      this.renderError("Instagram access token not found");
-      return;
+var fullUrl = domainUrl + fields + "&access_token=" + access_token;
+
+console.log(fullUrl);
+
+// fetch(fullUrl)
+//   .then((response) => response.json())
+//   .then((dataArray) => {
+//     dataArray.data.forEach((element) => {
+//       document.querySelector(".grid-gallery").innerHTML += `
+//         <li>
+//           <a class="grid-gallery__item" style="background-image: url('${element.media_url}');" href="${element.permalink}" title="${element.caption}" target="_blank"></a>
+//         </li>
+//       `;
+//     });
+//   });
+
+// fetch(fullUrl)
+//   .then((response) => response.json())
+//   .then((dataArray) => {
+//     const gallery = document.querySelector(".grid-gallery");
+//     dataArray.data.forEach((element) => {
+//       gallery.insertAdjacentHTML(
+//         "beforeend",
+//         `
+//     <li>
+//       <a class="grid-gallery__item"
+//          style="background-image: url('${element.media_url}');"
+//          href="${element.permalink}"
+//          title="${element.caption || ""}"
+//          target="_blank">
+//       </a>
+//     </li>
+//   `
+//       );
+//     });
+//   });
+
+/* =====  Error handling ====  */
+
+fetch(fullUrl)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`MAREK MESSAGE Błąd: ${response.statusText}`);
     }
-
-    try {
-      this.renderLoading();
-      const posts = await this.fetchPosts();
-      this.renderPosts(posts);
-    } catch (error) {
-      console.error("Instagram error:", error);
-      this.renderError(error?.error?.message || "Failed to load posts");
+    return response.json();
+  })
+  .then((dataArray) => {
+    if (dataArray.data) {
+      dataArray.data.forEach((element) => {
+        document.querySelector(".grid-gallery").insertAdjacentHTML(
+          "beforeend",
+          `
+          <li>
+            <a class="grid-gallery__item"
+               style="background-image: url('${element.media_url}');"
+               href="${element.permalink}"
+               title="${element.caption || ""}"
+               target="_blank">
+            </a>
+          </li>
+        `
+        );
+      });
     }
-  }
-
-  async fetchPosts() {
-    const url = new URL("https://graph.instagram.com/v22.0/me/media");
-    url.search = new URLSearchParams({
-      fields: [
-        "id", "caption", "media_type", "media_url", "permalink",
-        "thumbnail_url", "timestamp", "username",
-        "children{media_type,media_url,thumbnail_url}"
-      ].join(","),
-      access_token: instagramToken,
-      limit: 6
-    });
-
-    const res = await fetch(url);
-    const data = await res.json();
-    
-    if (!res.ok) throw data;
-    if (!data.data?.length) throw new Error("No posts found");
-    
-    return data.data;
-  }
-
-  renderPosts(posts) {
-    this.feedContainer.innerHTML = posts
-      .map(post => this.createPostHTML(post))
-      .filter(Boolean)
-      .join("");
-  }
-
-  createPostHTML(post) {
-    const mediaUrl = this.getMediaUrl(post);
-    if (!mediaUrl) return "";
-
-    return "<li>" +
-      '<a class="grid-gallery__item" ' +
-      'style="background-image: url(' + mediaUrl + ');" ' +
-      'href="' + post.permalink + '" ' +
-      'title="' + this.escapeHtml(post.caption || "") + '" ' +
-      'target="_blank"></a>' +
-      "</li>";
-  }
-
-  getMediaUrl({ media_type, thumbnail_url, media_url, children }) {
-    if (media_type === "VIDEO") return thumbnail_url;
-    if (media_type === "CAROUSEL_ALBUM") return children?.data[0]?.media_url || media_url;
-    return media_url;
-  }
-
-  renderLoading() {
-    this.feedContainer.innerHTML = '<li class="loading-spinner"><div class="spinner"></div><p>Loading...</p></li>';
-  }
-
-  renderError(message) {
-    this.feedContainer.innerHTML = `<li class="error-message">${this.escapeHtml(message)}</li>`;
-  }
-
-  escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-}
-
-// Initialize
-const feed = new InstagramFeed();
-document.addEventListener("DOMContentLoaded", () => feed.run());
+  })
+  .catch((error) => console.error("Wystąpił błąd:", error));
