@@ -48,10 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =============== */
 
 var map = L.map("map");
-map.setView([51.505, -0.09], 13);
 
-// Mode map 1 - https://tile.openstreetmap.org/{z}/{x}/{y}.png
-// Mode map 2 - https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png
+// // Ustawienie widoku na Łódź, Piotrkowska 82
+map.setView([51.7657, 19.4559], 15);
+
+// Dodanie markera dla Piotrkowskiej 82
+L.marker([51.7657, 19.4559])
+  .addTo(map)
+  .bindPopup("Piotrkowska 82, Łódź", {
+    offset: [0, 125],
+    className: "popup-bottom",
+    autoPanPadding: [50, 50],
+  })
+  .openPopup();
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   maxZoom: 19,
@@ -59,32 +68,36 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
-navigator.geolocation.watchPosition(success, error);
+// Zakomentowana geolokalizacja
 
-let marker, circle, zoomed;
+// navigator.geolocation.watchPosition(success, error);
 
-function success(pos) {
-  const lat = pos.coords.latitude;
-  const lng = pos.coords.longitude;
-  const accuracy = pos.coords.accuracy;
+// let marker, circle, zoomed;
 
-  if (marker) {
-    map.removeLayer(marker);
-    map.removeLayer(circle);
-  }
+// function success(pos) {
+//   const lat = pos.coords.latitude;
+//   const lng = pos.coords.longitude;
+//   const accuracy = pos.coords.accuracy;
 
-  marker = L.marker([lat, lng]).addTo(map);
-  circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+//   if (marker) {
+//     map.removeLayer(marker);
+//     map.removeLayer(circle);
+//   }
 
-  if (!zoomed) {
-    map.fitBounds(circle.getBounds());
-  }
-}
+//   marker = L.marker([lat, lng]).addTo(map);
+//   circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
 
-function error(err) {
-  if (err.code === 1) {
-    alert("Please allow access to your location.");
-  } else {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-}
+//   if (!zoomed) {
+//     map.fitBounds(circle.getBounds());
+//   }
+
+//   map.setView([lat, lng], 13);
+// }
+
+// function error(err) {
+//   if (err.code === 1) {
+//     alert("Please allow access to your location.");
+//   } else {
+//     console.warn(`ERROR(${err.code}): ${err.message}`);
+//   }
+// }

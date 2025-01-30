@@ -8,3 +8,23 @@
 #map {
   height: 350px;
 }
+
+.leaflet-popup-content-wrapper {
+  background-color: #f0f8ff; /* kolor tła */
+  border-radius: 12px;
+  border: 2px solid #4a90e2;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.leaflet-popup-tip {
+  background-color: #4a90e2; /* zmiana koloru strzałki */
+}
+
+// Styl dla popupu ze strzałką na górze
+.popup-bottom {
+  .leaflet-popup-tip-container {
+    top: -20px;
+    bottom: auto;
+    transform: rotate(180deg);
+  }
+}
