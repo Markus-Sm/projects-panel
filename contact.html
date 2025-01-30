@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Panel projektów</title>
+    <link rel="stylesheet" href="src/style/main.scss">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+</head>
+<body>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="contact.html" class="active">Kontakt</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main">
+        <section class="contact-container">
+            <h1>Kontakt</h1>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Wiadomość:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </section>
+        <section class="map-container">
+             <div id="map"></div>
+        </section>
+    </main>
+
+    <script type="module" src="src/js/contact.js"></script>
+</body>
+</html>

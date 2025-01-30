@@ -1,7 +1,6 @@
 import "jquery";
 import "jquery-ui-dist/jquery-ui.css";
 import "jquery-ui-dist/jquery-ui";
-import "../style/master.scss";
 import "./components/instagram-pureJs";
 
 // Initialize components
