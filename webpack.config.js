@@ -15,6 +15,12 @@ module.exports = {
     clean: true,
     publicPath: "/",
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      "jquery-ui": "jquery-ui-dist/jquery-ui.js",
+    },
+  },
   module: {
     rules: [
       {
@@ -31,6 +37,9 @@ module.exports = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'src/style')]
+              },
             },
           },
         ],
@@ -68,11 +77,6 @@ module.exports = {
       "window.jQuery": "jquery",
     }),
   ],
-  resolve: {
-    alias: {
-      "jquery-ui": "jquery-ui-dist/jquery-ui.js",
-    },
-  },
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
