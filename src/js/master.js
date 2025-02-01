@@ -1,12 +1,15 @@
 import "jquery";
 import "jquery-ui-dist/jquery-ui.css";
 import "jquery-ui-dist/jquery-ui";
+
+// Import wszystkich komponentów
 import "./components/instagram-pureJs";
+import "./classes/toggleTheme";
 
 // Initialize components
 const App = {
-  Widgets: {
-    Instagram: null, // Will be initialized after DOM is ready
+  init() {
+    console.log("App initialized");
   },
 };
 
@@ -16,7 +19,8 @@ window.App = App;
 $(document).ready(function () {
   // Initialize draggable
   $(".sub, p").draggable({
-    containment: "#main",
-    cancel: "#sub2",
+    containment: "parent",
   });
+
+  App.init();
 });

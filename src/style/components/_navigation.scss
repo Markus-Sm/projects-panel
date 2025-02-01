@@ -1,7 +1,7 @@
 @use "../variables" as *;
 
 .main-nav {
-    background: $secondary-color-dark;
+    background: $background-color;
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
@@ -20,7 +20,7 @@
         li {
             a {
                 text-decoration: none;
-                color: #ecf0f1;
+                color: $text-color;
                 font-weight: 500;
                 font-size: 1rem;
                 padding: 0.5rem 1rem;
@@ -34,13 +34,13 @@
                     height: 2px;
                     bottom: 0;
                     left: 50%;
-                    background-color: #3498db;
+                    background-color: $primary-color;
                     transition: all 0.3s ease;
                     transform: translateX(-50%);
                 }
 
                 &:hover {
-                    color: #3498db;
+                    color: $primary-color;
                     
                     &:after {
                         width: 80%;
@@ -48,7 +48,7 @@
                 }
 
                 &.active {
-                    color: #3498db;
+                    color: $primary-color;
                     
                     &:after {
                         width: 80%;
@@ -59,77 +59,11 @@
     }
 }
 
-.theme-toggle {
-    background: none;
+#theme-toggle {
+    color: $text-color;
+    position: absolute;
     border: none;
-    padding: 0.5rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ecf0f1;
-    transition: color 0.3s ease;
-
-    &:hover {
-        color: #3498db;
-    }
-
-    &__icon {
-        width: 24px;
-        height: 24px;
-        fill: currentColor;
-
-        &--sun {
-            display: none;
-        }
-
-        &--moon {
-            display: block;
-        }
-    }
-}
-
-// W trybie jasnym pokazujemy ikonę księżyca
-:root {
-    .theme-toggle {
-        &__icon {
-            &--sun {
-                display: none;
-            }
-            &--moon {
-                display: block;
-            }
-        }
-    }
-}
-
-// W trybie ciemnym pokazujemy ikonę słońca
-.theme-dark {
-    .theme-toggle {
-        &__icon {
-            &--sun {
-                display: block;
-            }
-            &--moon {
-                display: none;
-            }
-        }
-    }
-}
-
-// Responsywność
-@media (max-width: 768px) {
-    .main-nav {
-        padding: 0.8rem 1rem;
-
-        ul {
-            justify-content: center;
-            gap: 1rem;
-
-            li a {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-            }
-        }
-    }
+    top: 20px;
+    right: 20px;
 }

@@ -13,13 +13,6 @@ module.exports = {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/",
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-      "jquery-ui": "jquery-ui-dist/jquery-ui.js",
-    },
   },
   module: {
     rules: [
@@ -27,21 +20,8 @@ module.exports = {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-              sassOptions: {
-                includePaths: [path.resolve(__dirname, 'src/style')]
-              },
-            },
-          },
+          "css-loader",
+          "sass-loader"
         ],
       },
       {
@@ -49,10 +29,13 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-        type: "asset/resource",
-        generator: {
-          filename: "assets/[name][ext]",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
         },
       },
     ],
@@ -69,7 +52,7 @@ module.exports = {
       chunks: ["contact"],
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: "[name].css",
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -77,13 +60,18 @@ module.exports = {
       "window.jQuery": "jquery",
     }),
   ],
+  resolve: {
+    alias: {
+      "jquery-ui": "jquery-ui-dist/jquery-ui.js",
+    },
+    modules: [path.resolve(__dirname, "src"), "node_modules"],
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
     },
+    compress: true,
+    port: 8080,
     hot: true,
-    open: true,
-    historyApiFallback: true,
   },
-  devtool: "source-map",
 };
