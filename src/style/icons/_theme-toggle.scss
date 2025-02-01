@@ -1,0 +1,22 @@
+@use "../variables" as *;
+
+#theme-toggle {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  
+    // Domyślnie ikonka słońca
+    background-image: url("/img/sun.svg");
+}
+
+// Gdy aktywny tryb ciemny, zmieniamy na księżyc
+body[data-theme="dark"] #theme-toggle {
+    background-image: url("/img/moon.svg");
+}

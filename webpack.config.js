@@ -38,6 +38,13 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'icons/[name][ext]'
+        }
+      },
     ],
   },
   plugins: [
