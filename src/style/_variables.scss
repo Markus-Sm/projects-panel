@@ -1,42 +1,25 @@
-// Definicje kolorów
-$theme-colors: (
-  light: (
-    primary: #3498db,
-    background: #f5f5f5,
-    background2: #ffffff,
-    text: #000000,
-  ),
-  dark: (
-    primary: #1abc9c,
-    background: #2c3e50,
-    background2: #383b4a,
-    text: #ffffff,
-  ),
-);
-
-// Ustawienia motywu
-@use "sass:map";
-
-@function set-theme-colors($theme) {
-  @return map.get($theme-colors, $theme);
-}
-
+// Kolory dla jasnego i ciemnego motywu
 :root {
-  --primary: #{map.get(set-theme-colors('light'), primary)};
-  --background: #{map.get(set-theme-colors('light'), background)};
-  --background2: #{map.get(set-theme-colors('light'), background2)};
-  --text: #{map.get(set-theme-colors('light'), text)};
-
-  &[data-theme="dark"] {
-    --primary: #{map.get(set-theme-colors('dark'), primary)};
-    --background: #{map.get(set-theme-colors('dark'), background)};
-    --background2: #{map.get(set-theme-colors('dark'), background2)};
-    --text: #{map.get(set-theme-colors('dark'), text)};
-  }
+  // Jasny motyw (domyślny)
+  --primary: #3498db;
+  --background: #f5f5f5;
+  --background2: #ffffff;
+  --nav-background: #ffffff;
+  --text: #000000;
 }
 
-// Globalne zmienne kolorów
+// Ciemny motyw
+html[data-theme="dark"] {
+  --primary: #1abc9c;
+  --background: #2c3e50;
+  --background2: #383b4a;
+  --nav-background: #1a1f2e;
+  --text: #ffffff;
+}
+
+// Zmienne Sass dla wygody
 $primary: var(--primary);
 $background: var(--background);
 $background2: var(--background2);
+$nav-background: var(--nav-background);
 $text: var(--text);

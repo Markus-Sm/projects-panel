@@ -13,10 +13,10 @@
     right: 20px;
   
     // Domyślnie ikonka słońca
-    background-image: url("/img/sun.svg");
+    background-image: url("../../img/sun.svg");
 }
 
 // Gdy aktywny tryb ciemny, zmieniamy na księżyc
-body[data-theme="dark"] #theme-toggle {
-    background-image: url("/img/moon.svg");
+html[data-theme="dark"] #theme-toggle {
+    background-image: url("../../img/moon.svg");
 }
