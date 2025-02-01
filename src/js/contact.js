@@ -49,13 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 var map = L.map("map");
 
-// // Ustawienie widoku na Łódź, Piotrkowska 82
-map.setView([51.7657, 19.4559], 15);
+// // Ustawienie widoku na Wrocław przyjaźni 95
+map.setView([51.06898573425282, 16.999421808409863], 15);
 
-// Dodanie markera dla Piotrkowskiej 82
-L.marker([51.7657, 19.4559])
+// Dodanie markera dla Wrocław przyjaźni 95
+L.marker([51.06898573425282, 16.999421808409863])
   .addTo(map)
-  .bindPopup("Piotrkowska 82, Łódź", {
+  .bindPopup("Przyjaźni 95, Wrocław", {
     offset: [0, 125],
     className: "popup-bottom",
     autoPanPadding: [50, 50],
