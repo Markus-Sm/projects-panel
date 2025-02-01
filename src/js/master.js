@@ -4,23 +4,22 @@ import "jquery-ui-dist/jquery-ui";
 
 // Import wszystkich komponentów
 import "./components/instagram-pureJs";
-import "./classes/toggleTheme";
+import ThemeToggle from "./classes/toggleTheme";
 
 // Initialize components
 const App = {
   init() {
     console.log("App initialized");
+    // Initialize theme toggle
+    const themeToggle = new ThemeToggle('#theme-toggle');
+    themeToggle.init();
   },
 };
 
 // Make App global
 window.App = App;
 
-$(document).ready(function () {
-  // Initialize draggable
-  $(".sub, p").draggable({
-    containment: "parent",
-  });
-
-  App.init();
+// Initialize the app when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    App.init();
 });

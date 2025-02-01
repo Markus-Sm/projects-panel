@@ -1,7 +1,7 @@
 @use "../variables" as *;
 
 .main-nav {
-    background: $background-color;
+    background: $background;
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
@@ -20,7 +20,7 @@
         li {
             a {
                 text-decoration: none;
-                color: $text-color;
+                color: $text;
                 font-weight: 500;
                 font-size: 1rem;
                 padding: 0.5rem 1rem;
@@ -34,13 +34,13 @@
                     height: 2px;
                     bottom: 0;
                     left: 50%;
-                    background-color: $primary-color;
+                    background-color: $primary;
                     transition: all 0.3s ease;
                     transform: translateX(-50%);
                 }
 
                 &:hover {
-                    color: $primary-color;
+                    color: $primary;
                     
                     &:after {
                         width: 80%;
@@ -48,7 +48,7 @@
                 }
 
                 &.active {
-                    color: $primary-color;
+                    color: $primary;
                     
                     &:after {
                         width: 80%;
@@ -58,4 +58,3 @@
         }
     }
 }
-
