@@ -1,4 +1,6 @@
 <?php 
+$pageTitle = "Strona główna";
+$pageKey = "home";
 include "inc/header.inc.php";
 ?>
 

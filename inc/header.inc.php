@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel projektów</title>
+    <title>Panel projektów <?php if(!empty($pageTitle)): ?> &bull; <?php echo $pageTitle; ?><?php endif; ?> </title>
     
     <!-- Style -->
     <link rel="stylesheet" href="dist/main.css">
@@ -21,8 +21,8 @@
 <body>
     <nav class="main-nav">
         <ul>
-            <li><a href="index.php" class="active">Strona główna</a></li>
-            <li><a href="contact.php">Kontakt</a></li>
+            <li><a href="index.php" class="<?php echo $pageKey === "home" ? "active" : "" ?>">Strona główna</a></li>
+            <li><a href="contact.php" class="<?php echo $pageKey === "contact" ? "active" : "" ?>">Kontakt</a></li>
         </ul>
         <button id="theme-toggle"></button>
     </nav>

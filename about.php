@@ -1,4 +1,6 @@
 <?php 
+$pageTitle = "O projekcie";
+$pageKey = "about";
 include "inc/header.inc.php";
 ?>
 
