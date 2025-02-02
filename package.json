@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve",
-    "dev": "webpack serve --mode development --hot --open"
+    "watch": "webpack --watch",
+    "php": "php -S localhost:8000",
+    "dev": "concurrently \"npm run php\" \"npm run watch\""
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,9 @@
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
     "babel-loader": "^9.2.1",
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "concurrently": "^9.1.2",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",

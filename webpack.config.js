@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 
@@ -7,12 +6,12 @@ module.exports = {
   mode: "development",
   entry: {
     main: ["./src/js/master.js", "./src/style/main.scss"],
-    contact: ["./src/js/contact.js", "./src/style/main.scss"],
+    contact: ["./src/js/contact.js", "./src/style/main.scss"]
   },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true,
+    publicPath: "/dist/",
   },
   module: {
     rules: [
@@ -48,16 +47,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-      filename: "index.html",
-      chunks: ["main"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./contact.html",
-      filename: "contact.html",
-      chunks: ["contact"],
-    }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
@@ -73,12 +62,8 @@ module.exports = {
     },
     modules: [path.resolve(__dirname, "src"), "node_modules"],
   },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    compress: true,
-    port: 8080,
-    hot: true,
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
   },
 };

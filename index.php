@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel projektów</title>
-    <link rel="stylesheet" href="src/style/main.scss">
-  </head>
-  <body>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html" class="active">Strona główna</a></li>
-        <li><a href="contact.html">Kontakt</a></li>
-      </ul>
-      <button id="theme-toggle"></button>
-    </nav>
+<?php 
+include "inc/header.inc.php";
+?>
+
     <div id="main">
       <div id="user-container"></div>
 
@@ -30,10 +18,11 @@
               target="_blank"
             ></a>
           </li>
-          
         </ul>
       </div>
     </div>
     <script type="module" src="src/js/data.js"></script>
-  </body>
-</html>
+
+<?php 
+include "inc/footer.inc.php";
+?>
