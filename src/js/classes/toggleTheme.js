@@ -8,6 +8,7 @@ export default class ThemeToggle {
             return;
         }
         this.currentTheme = localStorage.getItem('theme') || 'light';
+        console.log('Initial theme:', this.currentTheme);
     }
 
     init() {
@@ -17,11 +18,17 @@ export default class ThemeToggle {
 
     toggleTheme() {
         this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+        console.log('Toggling theme to:', this.currentTheme);
         this.applyTheme();
     }
 
     applyTheme() {
+        console.log('Applying theme:', this.currentTheme);
         document.documentElement.setAttribute('data-theme', this.currentTheme);
         localStorage.setItem('theme', this.currentTheme);
+        
+        // Sprawdzamy, czy atrybut został faktycznie ustawiony
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        console.log('Current data-theme attribute:', currentTheme);
     }
 }
