@@ -10,3 +10,11 @@ Serwery deweloperskie:
 2. Webpack w trybie watch (npm run watch) - kompiluje assety
 
 */
+
+/* Uruchomienie serwera PHP *
+// Pierwszy sposob:
+// php -S localhost:8000
+// npm run watch
+
+// Drugi sposob:
+// npm run dev / npm run php
