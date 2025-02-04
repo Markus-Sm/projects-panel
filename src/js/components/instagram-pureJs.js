@@ -1,11 +1,10 @@
-console.log("Instagram loaded");
-
 let domainUrl = "https://graph.instagram.com/me/media?";
-let fields = "fields=media_url,media_type,thumbnail_url,permalink";
+let fields = "fields=media_url,media_type,thumbnail_url,permalink,children{media_type,media_url}";
+let limit = "limit=20"; // Zwiększamy limit, aby znaleźć więcej zdjęć
 var access_token =
   "IGAAN20vFaDNpBZAFBHeVpJVjk1NVhVZAUZABeTMzeUhqcUFvVGhYTThjV3ZAOS0tkZA0k2RDE4UkEtc2F6U3A0YjVDMDNoamVic1hnU0o3VzBBUmxfXzJTRlY3cWE4NmV4bWhQbmIzeUljb2ZAqTjRfVHhqd2RBZADBKcEsxNGc0ZAnZAMNAZDZD";
 
-var fullUrl = domainUrl + fields + "&access_token=" + access_token;
+var fullUrl = domainUrl + fields + "&" + limit + "&access_token=" + access_token;
 
 // console.log(fullUrl);
 
@@ -53,25 +52,31 @@ fetch(fullUrl)
   })
   .then((dataArray) => {
     if (dataArray.data) {
-      dataArray.data.forEach((element) => {
-        console.log("Element data:", element);
-        const mediaUrl = element.media_type === 'VIDEO' ? element.thumbnail_url : element.media_url;
-        if (mediaUrl) {
-          document.querySelector(".grid-gallery").insertAdjacentHTML(
-            "afterbegin",
-            `
-            <li>
-              <a class="grid-gallery__item"
-                 style="background-image: url('${mediaUrl}');"
-                 href="${element.permalink}"
-                 title="${element.caption || ""}"
-                 target="_blank">
-                 ${element.media_type === 'VIDEO' ? '<span class="video-indicator"></span>' : ''}
-              </a>
-            </li>
+      const imagePosts = dataArray.data
+        .filter(post => {
+          const isImage = post.media_type === "IMAGE";
+          const isCarousel = post.media_type === "CAROUSEL_ALBUM";
+          const hasValidUrl = post.media_url;
+          return (isImage || isCarousel) && hasValidUrl;
+        })
+        .slice(0, 6);
+
+      document.querySelector(".grid-gallery").innerHTML = '';
+      
+      imagePosts.forEach((element) => {
+        document.querySelector(".grid-gallery").insertAdjacentHTML(
+          "beforeend",
           `
-          );
-        }
+          <li>
+            <a class="grid-gallery__item"
+               style="background-image: url('${element.media_url}');"
+               href="${element.permalink}"
+               title="${element.caption || ""}"
+               target="_blank">
+            </a>
+          </li>
+        `
+        );
       });
     }
   })
