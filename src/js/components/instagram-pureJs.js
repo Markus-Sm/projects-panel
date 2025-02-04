@@ -58,7 +58,7 @@ fetch(fullUrl)
       let displayedImages = 0;
       const maxImages = 6;
       
-      // Iterujemy tylko raz przez dane
+      // Iterate through the data only once
       dataArray.data.some(post => {
         if ((post.media_type === "IMAGE" || post.media_type === "CAROUSEL_ALBUM") && post.media_url) {
           gridGallery.insertAdjacentHTML(
@@ -78,7 +78,7 @@ fetch(fullUrl)
           displayedImages++;
         }
         
-        // Przerywamy iterację gdy mamy wystarczającą liczbę zdjęć
+        // stop iterating when we have enough photos
         return displayedImages >= maxImages;
       });
     }
