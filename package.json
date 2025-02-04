@@ -6,7 +6,9 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "php": "php -S localhost:8000",
-    "dev": "concurrently \"npm run php\" \"npm run watch\""
+    "php-alt": "php -S localhost:8001",
+    "dev": "concurrently \"npm run php\" \"npm run watch\"",
+    "dev-alt": "concurrently \"npm run php-alt\" \"npm run watch\""
   },
   "keywords": [],
   "author": "",
