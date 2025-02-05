@@ -1,0 +1,3 @@
+Uruchomienie serwera: 
+
+- PORT=XXXX php -S localhost:XXXX
