@@ -40,7 +40,6 @@ var fullUrl = domainUrl + fields + "&" + limit + "&access_token=" + access_token
 //       );
 //     });
 //   });
-
 /* =====  Error handling ====  */
 
 fetch(fullUrl)
