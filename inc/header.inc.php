@@ -23,6 +23,8 @@
         <ul>
             <li><a href="index.php" class="<?php echo $pageKey === "home" ? "active" : "" ?>">Strona główna</a></li>
             <li><a href="contact.php" class="<?php echo $pageKey === "contact" ? "active" : "" ?>">Kontakt</a></li>
+            <li><a href="about.php" class="<?php echo $pageKey === "about" ? "active" : "" ?>">O projekcie</a></li>
+            <li><a href="course.php" class="<?php echo $pageKey === "course" ? "active" : "" ?>">Course Symfony</a></li>
         </ul>
         <button id="theme-toggle"></button>
     </nav>

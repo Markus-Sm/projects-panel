@@ -76,8 +76,7 @@ fetch(fullUrl)
           
           displayedImages++;
         }
-        
-        // stop iterating when we have enough photos
+
         return displayedImages >= maxImages;
       });
     }
