@@ -1,0 +1,17 @@
+{
+    "name": "mac/projects-panel",
+    "autoload": {
+        "psr-4": {
+            "Mac\\ProjectsPanel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marek Samofał",
+            "email": "96687413+Markus-Sm@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^7.2"
+    }
+}
