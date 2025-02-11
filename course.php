@@ -11,7 +11,11 @@ include "inc/header.inc.php";
 require_once __DIR__ . '/vendor/autoload.php'; 
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
+        $request = Request::createFromGlobals();
+        $uri = $request->getPathInfo();
+        $foo = $request->get('foo', 'not set');
 
         $uri = $_SERVER['REQUEST_URI'];
         $foo = $_GET['id'] ?? null;
