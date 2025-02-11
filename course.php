@@ -8,13 +8,22 @@ include "inc/header.inc.php";
     <h1><?php echo $pageTitle; ?></h1>
 
     <?php
+require_once __DIR__ . '/vendor/autoload.php'; 
+
+use Symfony\Component\HttpFoundation\Response;
+
+
         $uri = $_SERVER['REQUEST_URI'];
         $foo = $_GET['id'] ?? null;
 
-        // write response 
-        echo "The URI request is: <pre>$uri</pre><br>\n";
+        // prepate response 
+        $response = new Response();
 
-        echo "The value of the <pre>$pageKey</pre> parameter is: <pre>$foo</pre>";
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'text/html');
+        echo $response;
+
+        $response->send();
     ?>
 
 </div>

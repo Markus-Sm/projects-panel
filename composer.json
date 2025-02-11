@@ -11,5 +11,7 @@
             "email": "96687413+Markus-Sm@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/http-foundation": "^7.2"
+    }
 }
