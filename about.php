@@ -18,7 +18,7 @@ include "inc/header.inc.php";
             ></a>
 </li>
     </ul>
-    <input class="text-field" type="text" />
+    <input class="text-field"/>
 </div>
 
 <?php 
