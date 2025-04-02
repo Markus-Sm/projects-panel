@@ -18,7 +18,7 @@ include "inc/header.inc.php";
             ></a>
 </li>
     </ul>
-    <input class="text-field" type="text" name="powerShell" placeholder="type something"/>
+    <input class="text-field" type="text" name="powerShell"/>
 </div>
 
 <?php 
