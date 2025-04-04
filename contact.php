@@ -26,7 +26,7 @@ include "inc/header.inc.php";
         </div>
         </section>
         <section class="map-container">
-        <div id="map"></div>
+        
     </section>
 
 <?php 
