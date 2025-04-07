@@ -6,7 +6,7 @@ include "inc/header.inc.php";
 
 ?>
 
-<div style="padding: 30px 40px;">
+<div style="padding: 30px 44px;">
     <h1><?php echo $pageTitle; ?></h1>
 
 </div>
