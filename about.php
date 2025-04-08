@@ -5,7 +5,7 @@ include "inc/header.inc.php";
 ?>
 
 <div class="grid-gallery">
-    <ul id="instagram-feed" class="grid-gallery__list">
+    <ul id="instagram-feed" class="grid-gallery__list grid-gallery__list-active">
         <li>
             <a
               class="grid-gallery__item"
