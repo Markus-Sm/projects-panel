@@ -1,4 +1,4 @@
-let domainUrl = "https://graph.instagram.com/me/media?"
+let domainUrl = "https://graph.instagram.com/me/media?";
 let fields = "fields=media_url,media_type,thumbnail_url,permalink,children{media_type,media_url}";
 let limit = "limit=30"; // Zwiększamy limit, aby mieć większą szansę na znalezienie odpowiednich postów
 var access_token =
