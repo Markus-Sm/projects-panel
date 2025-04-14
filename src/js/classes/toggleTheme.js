@@ -1,5 +1,6 @@
 console.log("Toggle theme loaded");
 
+
 export default class ThemeToggle {
     constructor(containerSelector) {
         this.container = document.querySelector(containerSelector);
