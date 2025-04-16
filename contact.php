@@ -5,7 +5,7 @@ include "inc/header.inc.php";
 ?>
 
     <section class="contact-container">
-        <h1>Kontakt</h1>
+        <h1>Kontakt hr</h1>
         <div class="contact-form">
             <form id="contactForm">
                 <div class="form-group">
