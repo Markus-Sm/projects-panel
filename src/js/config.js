@@ -2,7 +2,7 @@
 export const instagramToken = ''; // Wstaw tutaj swój token dostępu do Instagram API
 
 /* 
-werwerwerwerwerwer
+
 Serwery deweloperskie:
 - Używamy dwóch serwerów:
 
