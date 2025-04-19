@@ -6,7 +6,7 @@ var access_token =
 
 var fullUrl = domainUrl + fields + "&" + limit + "&access_token=" + access_token;
 
-// console.log(fullUrl);
+/// console.log(fullUrl);
 
 // fetch(fullUrl)
 //   .then((response) => response.json())
