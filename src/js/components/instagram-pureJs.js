@@ -8,7 +8,7 @@ var fullUrl = domainUrl + fields + "&" + limit + "&access_token=" + access_token
 
 // console.log(fullUrl);
 
-// fetch(fullUrl)
+// fetch(fullUrl)p
 //   .then((response) => response.json())
 //   .then((dataArray) => {
 //     dataArray.data.forEach((element) => {
